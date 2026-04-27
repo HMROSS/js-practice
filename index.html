@@ -11,45 +11,89 @@
       }
       input {
         padding: 6px;
-        margin-right: 6px;
+        margin: 5px 0;
+        display: block;
       }
       button {
         padding: 6px 10px;
+        margin-bottom: 10px;
       }
       .result {
-        margin-top: 12px;
+        margin-bottom: 20px;
         font-weight: bold;
+      }
+      h3 {
+        margin-top: 30px;
       }
     </style>
   </head>
   <body>
-    <h2>Number Checker</h2>
+    <h2>JavaScript Mini App</h2>
 
+    <!-- Even/Odd -->
+    <h3>Number Checker</h3>
     <input type="number" id="numberInput" placeholder="Enter a number" />
     <button onclick="checkNumber()">Check</button>
+    <div class="result" id="numberResult"></div>
 
-    <div class="result" id="result"></div>
+    <!-- Vowel Counter -->
+    <h3>Vowel Counter</h3>
+    <input type="text" id="vowelInput" placeholder="Enter text" />
+    <button onclick="countVowels()">Count Vowels</button>
+    <div class="result" id="vowelResult"></div>
+
+    <!-- String Reverser -->
+    <h3>String Reverser</h3>
+    <input type="text" id="reverseInput" placeholder="Enter text" />
+    <button onclick="reverseString()">Reverse</button>
+    <div class="result" id="reverseResult"></div>
 
     <script>
-      function isEven(num) {
-        return num % 2 === 0;
-      }
-
+      // Even/Odd
       function checkNumber() {
         const input = document.getElementById("numberInput").value;
         const num = Number(input);
 
         if (input === "") {
-          document.getElementById("result").textContent =
-            "Please enter a number.";
+          document.getElementById("numberResult").textContent =
+            "Enter a number.";
           return;
         }
 
-        if (isEven(num)) {
-          document.getElementById("result").textContent = num + " is EVEN";
+        if (num % 2 === 0) {
+          document.getElementById("numberResult").textContent =
+            num + " is EVEN";
         } else {
-          document.getElementById("result").textContent = num + " is ODD";
+          document.getElementById("numberResult").textContent = num + " is ODD";
         }
+      }
+
+      // Vowel Counter
+      function countVowels() {
+        const str = document.getElementById("vowelInput").value.toLowerCase();
+        let count = 0;
+        const vowels = "aeiou";
+
+        for (let i = 0; i < str.length; i++) {
+          if (vowels.includes(str[i])) {
+            count++;
+          }
+        }
+
+        document.getElementById("vowelResult").textContent = "Vowels: " + count;
+      }
+
+      // String Reverser
+      function reverseString() {
+        const str = document.getElementById("reverseInput").value;
+        let result = "";
+
+        for (let i = str.length - 1; i >= 0; i--) {
+          result += str[i];
+        }
+
+        document.getElementById("reverseResult").textContent =
+          "Reversed: " + result;
       }
     </script>
   </body>
