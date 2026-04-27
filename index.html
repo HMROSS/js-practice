@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Practice App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      input {
+        padding: 6px;
+        margin-right: 6px;
+      }
+      button {
+        padding: 6px 10px;
+      }
+      .result {
+        margin-top: 12px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Number Checker</h2>
+
+    <input type="number" id="numberInput" placeholder="Enter a number" />
+    <button onclick="checkNumber()">Check</button>
+
+    <div class="result" id="result"></div>
+
+    <script>
+      function isEven(num) {
+        return num % 2 === 0;
+      }
+
+      function checkNumber() {
+        const input = document.getElementById("numberInput").value;
+        const num = Number(input);
+
+        if (input === "") {
+          document.getElementById("result").textContent =
+            "Please enter a number.";
+          return;
+        }
+
+        if (isEven(num)) {
+          document.getElementById("result").textContent = num + " is EVEN";
+        } else {
+          document.getElementById("result").textContent = num + " is ODD";
+        }
+      }
+    </script>
+  </body>
+</html>
